@@ -1,0 +1,18 @@
+@mixin font-family-Loto( $weight , $size ){
+  font-family: 'Loto', sans-serif;
+  font-weight: $weight;
+  font-size: $size;
+}
+
+@mixin font-family-Helvetica( $weight , $size ){
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: $weight;
+  font-size: $size;
+}
+
+@mixin font-family-Roboto( $weight , $size ){
+  font-family: 'Roboto', sans-serif;
+  font-weight: $weight;
+  font-size: $size;
+}
+

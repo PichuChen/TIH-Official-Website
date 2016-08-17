@@ -1,0 +1,19 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css");
+
+@import "compass";
+@import 'compass/css3/animation';
+@import "compass/css3/transition";
+
+/* --------- mixin ---------- */
+@import "./mixin/placeholder";
+@import "./mixin/flex";
+@import "./mixin/font";
+@import "./mixin/customAnimate";
+
+/* --------- base ---------- */
+@import "./component/base";
+@import "./component/variable";
+@import "./component/animate";
+
+/* --------- component ---------- */
+@import "./component/index";

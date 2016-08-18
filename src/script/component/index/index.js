@@ -2,16 +2,19 @@
 * @Author: Roxy Chen
 * @Date:   2016-08-17T18:10:52+08:00
 * @Last modified by:   Roxy Chen
-* @Last modified time: 2016-08-18T18:29:06+08:00
+* @Last modified time: 2016-08-19T05:10:53+08:00
 * @License: Copyright (c) by Giftpack Inc. All Rights Reserved.
 */
 
+import CountUp from '../../tool/Customize_Plugin/react-countup';
+import Waypoint from 'react-waypoint';
 
-import React, { Component } from 'react';
+import React, { Component , PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../actions/global';
+
 import apple from '../../../images/icon/apple-download.png';
 import android from '../../../images/icon//google-download.png';
 
@@ -24,24 +27,20 @@ import feature_4 from '../../../images/intro/4.jpg';
 class Index extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      numberTalksWayPoint: false,
+      navFix: true
+    };
   }
   componentDidMount(){}
   render() {
+    const {
+      numberTalksWayPoint,
+      navFix
+    } = this.state;
     return (
       <div className="main-container">
-        <div className="navbar-container vertical-flex-item">
-          <div className="navbar flex-row">
-            <div className="navgator link flex-row" >
-              <div>DEVELOPER<span className="underline"/></div>
-              <div>SERVICE<span className="underline"/></div>
-              <div>BRANDS<span className="underline"/></div>
-            </div>
-            <div className="navgator login flex-row" >
-              <div>Login</div>
-            </div>
-          </div>
-        </div>
+        <Navigator onTop={navFix}/>
         <section className="section-1 vertical-flex-item">
           <div className="landing-container">
             <div className="brand">TAIWAN INTELLIGENT HOME</div>
@@ -55,6 +54,7 @@ class Index extends Component {
               </div>
             </div>
           </div>
+        <Waypoint onEnter={()=>!navFix&&this.setState({navFix: true})} />
         </section>
         <section className="section-2 vertical-flex-item">
           <div className="service-container">
@@ -63,7 +63,6 @@ class Index extends Component {
               <div className="sub-title">WHAT YOU CAN DO WITH TIH</div>
             </div>
             <div className="service-features flex-row">
-
               <div className="feature">
                 <div className="feature-image"><img src={feature_1}/><div className="overlay"/></div>
                 <div className="feature-content">
@@ -96,14 +95,79 @@ class Index extends Component {
                 </div>
               </div>
             </div>
+            <Waypoint onEnter={()=>navFix&&this.setState({navFix: false})} />
           </div>
         </section>
-        <section className="section-3 vertical-flex-item"></section>
-        <section className="section-4"></section>
-        <footer></footer>
+        <section className="section-3 vertical-flex-item">
+          <div className="counts-container">
+            <div className="title-group">
+              <div className="title">Number Talks</div>
+              <div className="sub-title">PROGRESS OF TIH IoT</div>
+            </div>
+            <Waypoint onEnter={()=>!numberTalksWayPoint&&this.setState({numberTalksWayPoint: true})} />
+            <div className="services-use-count flex-row">
+              <div className="count-display">
+                <div className="total-counts"><CountUp run={numberTalksWayPoint} start={0} end={17} /></div>
+                <div className="service-intro">BRANDS COOPERATE WITH TIH SERVICE</div>
+              </div>
+              <div className="count-display">
+                <div className="total-counts"><CountUp run={numberTalksWayPoint} start={0} end={98721}/></div>
+                <div className="service-intro">REQUESTS HAVE BEEN SENT ON TIH CLOUD</div>
+              </div>
+              <div className="count-display">
+                <div className="total-counts"><CountUp run={numberTalksWayPoint} start={0} end={72}/></div>
+                <div className="service-intro">DEVICES SUPPORT TIH CLOUD</div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+        <section className="section-4 vertical-flex-item">
+          <div className="subscribe-container">
+            <div className="subscribe-symbol email"><input placeholder="SUBSCRIBE EDM BY EMAIL"/></div>
+            <div className="horizon"/>
+            <div className="subscribe-symbol facebook vertical-flex-item"><div>FOLLOW US ON FACEBOOK</div></div>
+          </div>
+        </section>
+        <footer className="vertical-flex-item">
+          <div className="footer-container vertical-flex-item ">
+            <div className="footer-brand">TAIWAN INTELLIGENT HOME</div>
+            <div className="footer-copyright">All Rights Reserved 2016</div>
+          </div>
+        </footer>
       </div>
     );
 
+  }
+}
+
+
+class Navigator extends Component {
+  static propTypes = {
+    onTop: PropTypes.bool.isRequired,
+  };
+  static defaultProps = {
+    onTop: true
+  }
+  constructor(props){
+    super(props)
+  }
+  render(){
+    const { onTop } = this.props;
+    return(
+      <div className={ onTop ? 'navbar-container vertical-flex-item' : 'navbar-container vertical-flex-item fixed'}>
+      {!onTop && (<span className="brand-text">TAIWAN INTELLIGENT HOME</span>)}
+        <div className={ onTop ? 'navbar flex-row' : 'navbar flex-row fixed'}>
+          <div className="navgator link flex-row" >
+            <div>DEVELOPER<span className="underline"/></div>
+            { onTop && (<div>SERVICE<span className="underline"/></div>) }
+            <div>BRANDS<span className="underline"/></div>
+          </div>
+          <div className="navgator login flex-row" >
+            <div className={ onTop && 'login-btn'}>Login</div>
+          </div>
+        </div>
+      </div> )
   }
 }
 

@@ -1,3 +1,12 @@
+/**
+* @Author: Roxy Chen
+* @Date:   2016-08-19T05:37:44+08:00
+* @Last modified by:   Roxy Chen
+* @Last modified time: 2016-08-19T05:49:34+08:00
+* @License: Copyright (c) by Giftpack Inc. All Rights Reserved.
+*/
+
+
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -15,11 +24,11 @@ module.exports = {
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new ExtractTextPlugin('css/style.css'),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': JSON.stringify('production')
-      }
-    }),
+    // new webpack.DefinePlugin({
+    //   'process.env': {
+    //     'NODE_ENV': JSON.stringify('production')
+    //   }
+    // }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false
@@ -31,16 +40,16 @@ module.exports = {
       {
         test: /\.js[x]?$/,
         loaders: [
-          'babel',
-          'eslint-loader'
+          'babel'
+          // 'eslint-loader'
         ],
         include: path.join(__dirname, 'src')
       },
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract(
-          'style-loader', 
-          'css-loader!sass-loader?includePaths[]=' 
+          'style-loader',
+          'css-loader!sass-loader?includePaths[]='
           + path.resolve(__dirname, './node_modules/compass-mixins/lib')
         )
       },
@@ -55,19 +64,19 @@ module.exports = {
       {
         test: /.*\.(gif|png|jpe?g|svg)$/,
         loaders: [
-          'url-loader?limit=0',
+          'url-loader?limit=0'
           // 'url-loader?limit=262144',
           // 'file?hash=sha512&digest=hex&name=images/[hash].[ext]', // 這行暫時有路徑上的錯誤所以先註解
           // 'image-webpack?{progressive:true, optimizationLevel: 10, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
         ]
       },
-      { 
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-        loader: "url-loader?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]" 
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url-loader?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]"
       },
-      { 
-        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-        loader: "file-loader?limit=1024&name=fonts/[name].[ext]" 
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "file-loader?limit=1024&name=fonts/[name].[ext]"
       }
     ]
   },

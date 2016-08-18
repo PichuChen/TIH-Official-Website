@@ -2,7 +2,7 @@
 * @Author: Roxy Chen
 * @Date:   2016-08-17T18:10:52+08:00
 * @Last modified by:   Roxy Chen
-* @Last modified time: 2016-08-19T05:10:53+08:00
+* @Last modified time: 2016-08-19T06:17:05+08:00
 * @License: Copyright (c) by Giftpack Inc. All Rights Reserved.
 */
 
@@ -10,10 +10,10 @@ import CountUp from '../../tool/Customize_Plugin/react-countup';
 import Waypoint from 'react-waypoint';
 
 import React, { Component , PropTypes } from 'react';
-import { Link } from 'react-router';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as actions from '../../actions/global';
+// import { Link } from 'react-router';
+// import { connect } from 'react-redux';
+// import { bindActionCreators } from 'redux';
+// import * as actions from '../../actions/global';
 
 import apple from '../../../images/icon/apple-download.png';
 import android from '../../../images/icon//google-download.png';
@@ -24,7 +24,7 @@ import feature_3 from '../../../images/intro/3.jpg';
 import feature_4 from '../../../images/intro/4.jpg';
 
 
-class Index extends Component {
+export default class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -171,4 +171,4 @@ class Navigator extends Component {
   }
 }
 
-export default connect((state , ownProps ) => ( state ))( Index );
+// export default connect((state , ownProps ) => ( state ))( Index );

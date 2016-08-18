@@ -5,17 +5,50 @@
 * @Author: Roxy Chen
 * @Date:   2016-08-19T03:07:25+08:00
 * @Last modified by:   Roxy Chen
-* @Last modified time: 2016-08-19T03:40:25+08:00
+* @Last modified time: 2016-08-19T06:23:29+08:00
 * @License: Copyright (c) by Giftpack Inc. All Rights Reserved.
 */
 
 
-import React, { PropTypes } from 'react';
-import { findDOMNode } from 'react-dom';
-import Count from 'countup.js';
+import React, { Component , PropTypes } from 'react';
+import reactDom from 'react-dom';
+import Count from './countup/dist/countUp.min';
 
-class CountUp extends React.Component {
-  componentDidMount() {
+export default class CountUp extends Component {
+
+  static defaultProps = {
+    run: false,
+    start: 0,
+    end: 2016,
+    decimals: 0,
+    duration: 10,
+    useEasing: true,
+    useGrouping: false,
+    separator: ',',
+    decimal: '.',
+    prefix: '',
+    suffix: '',
+  };
+
+  static propTypes = {
+    run: PropTypes.bool,
+    className: PropTypes.node,
+    style: PropTypes.object,
+    start: PropTypes.number.isRequired,
+    end: PropTypes.number.isRequired,
+    decimals: PropTypes.number,
+    duration: PropTypes.number,
+    useEasing: PropTypes.bool,
+    useGrouping: PropTypes.bool,
+    separator: PropTypes.string,
+    decimal: PropTypes.string,
+    prefix: PropTypes.string,
+    suffix: PropTypes.string,
+    callback: PropTypes.func,
+  };
+
+  constructor(props){
+    super(props);
     const {
       run,
       start,
@@ -46,6 +79,9 @@ class CountUp extends React.Component {
       callback,
     };
 
+  }
+
+  componentDidMount() {
     this.startAnimation();
   }
 
@@ -69,7 +105,7 @@ class CountUp extends React.Component {
       callback,
     } = this.props;
 
-    const countup = new Count(findDOMNode(this), start, end, decimals, duration, {
+    const countup = new Count(reactDom.findDOMNode(this), start, end, decimals, duration, {
       useEasing,
       useGrouping,
       separator,
@@ -83,40 +119,8 @@ class CountUp extends React.Component {
 
   render() {
     const { className, start, style } = this.props;
-
-    return <span className={className} style={style}>{start}</span>;
+    return (
+      <span className={className} style={style}>{start}</span>
+    );
   }
 }
-
-CountUp.defaultProps = {
-  run: false,
-  start: 0,
-  end: 2016,
-  decimals: 0,
-  duration: 10,
-  useEasing: true,
-  useGrouping: false,
-  separator: ',',
-  decimal: '.',
-  prefix: '',
-  suffix: '',
-};
-
-CountUp.propTypes = {
-  run: PropTypes.bool,
-  className: PropTypes.node,
-  style: PropTypes.object,
-  start: PropTypes.number.isRequired,
-  end: PropTypes.number.isRequired,
-  decimals: PropTypes.number,
-  duration: PropTypes.number,
-  useEasing: PropTypes.bool,
-  useGrouping: PropTypes.bool,
-  separator: PropTypes.string,
-  decimal: PropTypes.string,
-  prefix: PropTypes.string,
-  suffix: PropTypes.string,
-  callback: PropTypes.func,
-};
-
-export default CountUp;

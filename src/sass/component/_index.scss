@@ -1,26 +1,286 @@
-.container{
-  height: 99vh;
-  text-align: center;
-  position: relative;
-  @include display-flex;
-  @include align-items(center);
-  @include justify-content(center);
-  .hello{
-    line-height: 200%;
-    width: 30%;
-    font-size: 18px;
-    letter-spacing: 2px;
-    font-family: 'helvetica';
-    font-weight: 300;
-    img{
-      margin-bottom: 30px;
+// @Author: Roxy Chen
+// @Date:   2016-08-17T18:23:17+08:00
+// @Last modified by:   Roxy Chen
+// @Last modified time: 2016-08-18T18:28:34+08:00
+// @License: Copyright (c) by Giftpack Inc. All Rights Reserved.
+
+.navbar-container {
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  // border: 1px solid #000;
+}
+
+.navbar {
+  margin: 55px auto;
+  width: 85%;
+  height: 70px;
+  // border: 1px solid #000;
+
+  .navgator{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    &.link{
+
+      div{
+        cursor: pointer;
+        @include display-flex;
+        @include align-items(center);
+        @include font-family-Loto(300 , 14px);
+        @include flex-direction(column);
+        line-height: 40px;
+        letter-spacing: 4px;
+        color: #fff;
+        height: 50px;
+        margin-right: 40px;
+        span.underline {
+          @include transition(.2s);
+          position: relative;
+          height: 1px;
+          width: 0%;
+          background-color: #fff;
+        }
+        &:hover{
+          .underline{
+            width: 100%;
+            background-color: #fff;
+          }
+        }
+      }
+
     }
-    a{
-      display: inline-block;
-      margin-top: 30px; 
-      font-size: 16px;
-      text-decoration: none;
-      color: #F16E86;
+
+    &.login{
+      @include justify-content(flex-end);
+      @include align-items(center);
+      div{
+        cursor: pointer;
+        @include display-flex;
+        @include align-items(center);
+        @include justify-content(center);
+        @include font-family-Loto(400 , 14px);
+        @include transition(.2s);
+        line-height: 40px;
+        letter-spacing: 3px;
+        color: #fff;
+        border: 1.5px solid #fff;
+        border-radius: 50px;
+        width: 100px;
+        height: 40px;
+        margin-right: 40px;
+        &:hover{
+          background-color: #fff;
+          color: #666;
+        }
+      }
     }
   }
+}
+
+.section-1 {
+  .landing-container {
+    position: relative;
+    // @include display-flex;
+    // @include justify-content(center);
+    // @include align-items(center);
+    @include translateY(40px);
+    width: 70%;
+    height: 450px;
+    // border: 1px solid #000;
+    .brand{
+      position: relative;
+      width: 100%;
+      @include font-family-Loto(300 , 18px);
+      text-align: center;
+      letter-spacing: 4px;
+      color: #fff;
+    }
+    .title{
+      position: relative;
+      // width: 100%;
+      margin: 100px 0 30px;
+      @include font-family-Loto(300 , 45px);
+      text-align: center;
+      letter-spacing: 5px;
+      color: #fff;
+    }
+    .sub-title {
+      position: relative;
+      width: 100%;
+      @include font-family-Loto(300 , 24px);
+      text-align: center;
+      letter-spacing: 4px;
+      color: #fff;
+    }
+    .download-group {
+      position: relative;
+      margin: 100px auto 0;
+      width: 500px;
+      height: 100px;
+      // border: 1px solid #000;
+      .download {
+        position: relative;
+        width: 100%;
+        @include font-family-Loto(300 , 16px);
+        text-align: center;
+        letter-spacing: 3.6px;
+        color: #fff;
+        margin: 0 auto 20px;
+      }
+      .link {
+        position: relative;
+        @include display-flex;
+        @include justify-content(center);
+        // @include align-items(center);
+        a{ margin: 0 10px; }
+      }
+    }
+  }
+}
+
+
+
+.section-2 {
+  .service-container {
+    position: relative;
+    width: 80%;
+    // height: 600px;
+    // border: 1px solid #000;
+
+    .title-group {
+      position: relative;
+      margin: 0 auto 100px;
+      width: 400px;
+
+      .title {
+        position: relative;
+        margin: 0px 0 25px;
+        @include font-family-Loto(400 , 46px);
+        text-align: center;
+        letter-spacing: 5px;
+        color: #fff;
+      }
+
+      .sub-title {
+        position: relative;
+        width: 100%;
+        @include font-family-Loto(100 , 20px);
+        text-align: center;
+        letter-spacing: 3.6px;
+        color: #fff;
+      }
+
+    }
+
+    .service-features {
+      position: relative;
+      width: 100%;
+      // border: 1px solid #fff;
+      .feature{
+        overflow: hidden;
+        @include flex(1);
+        border-radius: 10px;
+        position: relative;
+        height: 400px;
+        // background-color: #fff;
+        margin: 0 25px;
+        &:hover{
+          .feature-image {
+              .overlay{background-color: rgba(0,0,0, 0.65);}
+          }
+          .feature-content {
+            height: 300px;
+          }
+        }
+        .feature-image {
+
+          // @include translateY(-10px);
+          img { width: 100%; }
+          .overlay{
+            @include transition(.3s);
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 300px;
+            background-color: rgba(0,0,0, 0);
+          }
+        }
+
+
+        .feature-content{
+          @include transition(.3s);
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          height: 250px;
+          // border: 1px solid #000;
+          background-color: #fff;
+
+          .feature-content-title {
+            @include font-family-Loto( 300 , 14px);
+            letter-spacing: 1.8px;
+            text-align: center;
+            width: 100%;
+            margin: 20px 0 15px;
+            color: #333;
+          }
+
+          p {
+            margin: 0 auto;
+            display: block;
+            word-wrap: break-word;
+            width: 90%;
+            @include font-family-Loto(100 , 12px);
+            letter-spacing: 1.8px;
+            line-height: 1.4;
+            color: #555;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+// base and background style
+section{
+  position: relative;
+  width: 100%;
+  &.section-1{
+    height: 100vh;
+    min-height: 600px;
+    background: url('../images/background/section_1.jpg') center no-repeat fixed;
+    background-size: cover;
+  }
+  &.section-2{
+    height: 100vh;
+    min-height: 600px;
+    background-color: #252525;
+  }
+  &.section-3{
+    height: 100vh;
+    min-height: 600px;
+    background: url('../images/background/section_3.jpg') center no-repeat fixed;
+    background-size: cover;
+  }
+  &.section-4{
+    height: 300px;
+    background: url('../images/background/section_4.jpg') top center no-repeat;
+    background-size: 100% auto;
+  }
+}
+footer{
+  position: relative;
+  width: 100%;
+  height: 150px;
 }

@@ -1,3 +1,12 @@
+/**
+* @Author: Roxy Chen
+* @Date:   2016-08-18T15:25:28+08:00
+* @Last modified by:   Roxy Chen
+* @Last modified time: 2016-08-18T15:25:28+08:00
+* @License: Copyright (c) by Giftpack Inc. All Rights Reserved.
+*/
+
+
 'use strict';
 
 var path = require('path');
@@ -44,8 +53,8 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract(
-          'style-loader', 
-          'css-loader!sass-loader?includePaths[]=' 
+          'style-loader',
+          'css-loader!sass-loader?includePaths[]='
           + path.resolve(__dirname, './node_modules/compass-mixins/lib')
         )
       },
@@ -65,13 +74,13 @@ module.exports = {
           // 'image-webpack?{progressive:true, optimizationLevel: 10, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
         ]
       },
-      { 
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-        loader: "url-loader?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]" 
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url-loader?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]"
       },
-      { 
-        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-        loader: "file-loader?limit=1024&name=fonts/[name].[ext]" 
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "file-loader?limit=1024&name=fonts/[name].[ext]"
       }
     ]
   },

@@ -1,19 +1,26 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css");
+// @Author: Roxy Chen
+// @Date:   2016-08-17T18:22:39+08:00
+// @Last modified by:   Roxy Chen
+// @Last modified time: 2016-08-17T18:22:39+08:00
+// @License: Copyright (c) by Giftpack Inc. All Rights Reserved.
 
-@import "compass";
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css');
+
+@import 'compass';
 @import 'compass/css3/animation';
-@import "compass/css3/transition";
+@import 'compass/css3/transition';
 
 /* --------- mixin ---------- */
-@import "./mixin/placeholder";
-@import "./mixin/flex";
-@import "./mixin/font";
-@import "./mixin/customAnimate";
+@import './mixin/placeholder';
+@import './mixin/flex';
+@import './mixin/font';
+@import './mixin/customAnimate';
 
 /* --------- base ---------- */
-@import "./component/base";
-@import "./component/variable";
-@import "./component/animate";
+@import './component/base';
+@import './component/variable';
+@import './component/animate';
 
 /* --------- component ---------- */
-@import "./component/index";
+@import './component/index';

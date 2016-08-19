@@ -55,7 +55,7 @@
     "jquery": "^2.2.3",
     "masonry-layout": "^4.1.0",
     "react": "^0.14.8",
-    "react-addons-css-transition-group": "^15.1.0",
+    "react-addons-css-transition-group": "^15.3.0",
     "react-constants": "^0.2.2",
     "react-countup": "^1.2.0",
     "react-cropper": "^0.8.0",

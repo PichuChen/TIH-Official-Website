@@ -2,13 +2,14 @@
 * @Author: Roxy Chen
 * @Date:   2016-08-17T18:10:52+08:00
 * @Last modified by:   Roxy Chen
-* @Last modified time: 2016-08-19T05:10:53+08:00
+* @Last modified time: 2016-08-20T03:39:13+08:00
 * @License: Copyright (c) by Giftpack Inc. All Rights Reserved.
 */
 
 import CountUp from '../../tool/Customize_Plugin/react-countup';
 import Waypoint from 'react-waypoint';
 
+// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import React, { Component , PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
@@ -23,11 +24,12 @@ import feature_2 from '../../../images/intro/2.jpg';
 import feature_3 from '../../../images/intro/3.jpg';
 import feature_4 from '../../../images/intro/4.jpg';
 
-
-class Index extends Component {
+export default class Index extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      serviceWaypoint: false,
+      landingWaypoint: false,
       numberTalksWayPoint: false,
       navFix: true
     };
@@ -35,6 +37,8 @@ class Index extends Component {
   componentDidMount(){}
   render() {
     const {
+      serviceWaypoint,
+      landingWaypoint,
       numberTalksWayPoint,
       navFix
     } = this.state;
@@ -42,58 +46,64 @@ class Index extends Component {
       <div className="main-container">
         <Navigator onTop={navFix}/>
         <section className="section-1 vertical-flex-item">
+        <Waypoint onEnter={()=>!landingWaypoint&&this.setState({landingWaypoint: true})} />
           <div className="landing-container">
-            <div className="brand">TAIWAN INTELLIGENT HOME</div>
-            <div className="title">MAKE SMART HOME SMARTER</div>
-            <div className="sub-title">CONTROL SMART HOME IN A SINGLE APP</div>
+            <AnimateEffect trigger={landingWaypoint} className={"brand"} effect={"fadeInUp"} delay={2000} >TAIWAN INTELLIGENT HOME</AnimateEffect>
+            <AnimateEffect trigger={landingWaypoint} className={"title"} effect={"fadeIn"} delay={1000} >MAKE SMART HOME SMARTER</AnimateEffect>
+            <AnimateEffect trigger={landingWaypoint} className={"sub-title"} effect={"fadeInDown"} delay={1500} >CONTROL SMART HOME IN A SINGLE APP</AnimateEffect>
             <div className="download-group">
-              <div className="download"> DOWNLOAD ON </div>
+              <AnimateEffect trigger={landingWaypoint} className={"download"} effect={"fadeInDown"} delay={2500} > DOWNLOAD ON </AnimateEffect>
               <div className="link">
-                <a href="#"><img src={apple} width="172"/></a>
-                <a href="#"><img src={android} width="172"/></a>
+                <AnimateEffect trigger={landingWaypoint} effect={"fadeInUp"} delay={3000} >
+                  <a href="#"><img src={apple} width="172"/></a>
+                </AnimateEffect>
+                <AnimateEffect trigger={landingWaypoint} effect={"fadeInUp"} delay={3100} >
+                  <a href="#"><img src={android} width="172"/></a>
+                </AnimateEffect>
               </div>
             </div>
           </div>
         <Waypoint onEnter={()=>!navFix&&this.setState({navFix: true})} />
         </section>
         <section className="section-2 vertical-flex-item">
+        <Waypoint onEnter={()=>!serviceWaypoint&&this.setState({serviceWaypoint: true})} />
           <div className="service-container">
             <div className="title-group">
               <div className="title">Our Service</div>
               <div className="sub-title">WHAT YOU CAN DO WITH TIH</div>
             </div>
             <div className="service-features flex-row">
-              <div className="feature">
+              <AnimateEffect trigger={serviceWaypoint} className={"feature"} effect={"fadeInUp"} delay={800} >
                 <div className="feature-image"><img src={feature_1}/><div className="overlay"/></div>
                 <div className="feature-content">
                   <div className="feature-content-title">IoT Integration</div>
                   <p> Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at. Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus. Nam tempus vel odio vitae aliquam. In imperdiet eros id lacus vestibulum vestibulum. </p>
                 </div>
-              </div>
-
-              <div className="feature">
+              </AnimateEffect>
+              <AnimateEffect trigger={serviceWaypoint} className={"feature"} effect={"fadeInUp"} delay={600} >
                 <div className="feature-image"><img src={feature_2}/><div className="overlay"/></div>
                 <div className="feature-content">
                   <div className="feature-content-title">All-In-One Control</div>
                   <p> Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at. Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus. Nam tempus vel odio vitae aliquam. In imperdiet eros id lacus vestibulum vestibulum. </p>
                 </div>
-              </div>
+              </AnimateEffect>
 
-              <div className="feature">
+              <AnimateEffect trigger={serviceWaypoint} className={"feature"} effect={"fadeInUp"} delay={700} >
                 <div className="feature-image"><img src={feature_3}/><div className="overlay"/></div>
                 <div className="feature-content">
                   <div className="feature-content-title">IoT Integration</div>
                   <p> Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at. Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus. Nam tempus vel odio vitae aliquam. In imperdiet eros id lacus vestibulum vestibulum. </p>
                 </div>
-              </div>
+              </AnimateEffect>
 
-              <div className="feature">
+              <AnimateEffect trigger={serviceWaypoint} className={"feature"} effect={"fadeInUp"} delay={900} >
                 <div className="feature-image"><img src={feature_4}/><div className="overlay"/></div>
                 <div className="feature-content">
                   <div className="feature-content-title">IoT Integration</div>
                   <p> Curabitur lobortis id lorem id bibendum. Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at. Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus. Nam tempus vel odio vitae aliquam. In imperdiet eros id lacus vestibulum vestibulum. </p>
                 </div>
-              </div>
+              </AnimateEffect>
+
             </div>
             <Waypoint onEnter={()=>navFix&&this.setState({navFix: false})} />
           </div>
@@ -107,15 +117,15 @@ class Index extends Component {
             <Waypoint onEnter={()=>!numberTalksWayPoint&&this.setState({numberTalksWayPoint: true})} />
             <div className="services-use-count flex-row">
               <div className="count-display">
-                <div className="total-counts"><CountUp run={numberTalksWayPoint} start={0} end={17} /></div>
+                <div className="total-counts"><CountUp trigger={numberTalksWayPoint} start={0} end={17} /></div>
                 <div className="service-intro">BRANDS COOPERATE WITH TIH SERVICE</div>
               </div>
               <div className="count-display">
-                <div className="total-counts"><CountUp run={numberTalksWayPoint} start={0} end={98721}/></div>
+                <div className="total-counts"><CountUp trigger={numberTalksWayPoint} start={0} end={98721}/></div>
                 <div className="service-intro">REQUESTS HAVE BEEN SENT ON TIH CLOUD</div>
               </div>
               <div className="count-display">
-                <div className="total-counts"><CountUp run={numberTalksWayPoint} start={0} end={72}/></div>
+                <div className="total-counts"><CountUp trigger={numberTalksWayPoint} start={0} end={72}/></div>
                 <div className="service-intro">DEVICES SUPPORT TIH CLOUD</div>
               </div>
             </div>
@@ -141,6 +151,48 @@ class Index extends Component {
   }
 }
 
+class AnimateEffect extends Component {
+  static propTypes = {
+    trigger: PropTypes.bool.isRequired ,
+    className:PropTypes.string.isRequired,
+    delay: PropTypes.number.isRequired ,
+    effect: PropTypes.string.isRequired,
+  };
+
+  static defaultProps = {
+    trigger: false ,
+    className: '',
+    delay: 0,
+    effect: '',
+  }
+
+  constructor() {
+    super()
+    this.state = { effect: '' }
+  }
+
+  setEffect (effect) {
+    this.setState({ effect })
+  }
+
+  render() {
+    const {
+      trigger , className, children , delay , effect
+    } = this.props;
+    trigger && setTimeout(()=>this.setEffect(effect) , delay );
+
+    return(
+      <div
+        style={{opacity: 0}}
+        className={ className + ' ' + this.state.effect + ' animated'}
+        >
+        { children }
+      </div>
+    )
+  }
+}
+
+
 
 class Navigator extends Component {
   static propTypes = {
@@ -159,9 +211,9 @@ class Navigator extends Component {
       {!onTop && (<span className="brand-text">TAIWAN INTELLIGENT HOME</span>)}
         <div className={ onTop ? 'navbar flex-row' : 'navbar flex-row fixed'}>
           <div className="navgator link flex-row" >
-            <div>DEVELOPER<span className="underline"/></div>
-            { onTop && (<div>SERVICE<span className="underline"/></div>) }
-            <div>BRANDS<span className="underline"/></div>
+            <AnimateEffect trigger={true} effect={"fadeInDown"} delay={200} >DEVELOPER<span className="underline"/></AnimateEffect>
+{ onTop && (<AnimateEffect trigger={true} effect={"fadeInDown"} delay={400} >SERVICE<span className="underline"/></AnimateEffect>) }
+            <AnimateEffect trigger={true} effect={"fadeInDown"} delay={600} >BRANDS<span className="underline"/></AnimateEffect>
           </div>
           <div className="navgator login flex-row" >
             <div className={ onTop && 'login-btn'}>Login</div>
@@ -171,4 +223,4 @@ class Navigator extends Component {
   }
 }
 
-export default connect((state , ownProps ) => ( state ))( Index );
+// export default connect((state , ownProps ) => ( state ))( Index );

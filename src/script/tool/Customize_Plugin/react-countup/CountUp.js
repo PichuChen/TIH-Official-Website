@@ -5,7 +5,7 @@
 * @Author: Roxy Chen
 * @Date:   2016-08-19T03:07:25+08:00
 * @Last modified by:   Roxy Chen
-* @Last modified time: 2016-08-19T03:40:25+08:00
+* @Last modified time: 2016-08-19T18:16:50+08:00
 * @License: Copyright (c) by Giftpack Inc. All Rights Reserved.
 */
 
@@ -17,7 +17,7 @@ import Count from 'countup.js';
 class CountUp extends React.Component {
   componentDidMount() {
     const {
-      run,
+      trigger,
       start,
       end,
       duration,
@@ -32,7 +32,7 @@ class CountUp extends React.Component {
     } = this.props;
 
     this.state = {
-      run,
+      trigger,
       start,
       end,
       duration,
@@ -55,7 +55,7 @@ class CountUp extends React.Component {
 
   startAnimation() {
     const {
-      run,
+      trigger,
       start,
       end,
       duration,
@@ -78,7 +78,7 @@ class CountUp extends React.Component {
       suffix,
     });
 
-    run && countup.start(callback);
+    trigger && countup.start(callback);
   }
 
   render() {
@@ -89,7 +89,7 @@ class CountUp extends React.Component {
 }
 
 CountUp.defaultProps = {
-  run: false,
+  trigger: false,
   start: 0,
   end: 2016,
   decimals: 0,
@@ -103,7 +103,7 @@ CountUp.defaultProps = {
 };
 
 CountUp.propTypes = {
-  run: PropTypes.bool,
+  trigger: PropTypes.bool,
   className: PropTypes.node,
   style: PropTypes.object,
   start: PropTypes.number.isRequired,

@@ -2,7 +2,7 @@
 * @Author: Roxy Chen
 * @Date:   2016-08-19T05:37:44+08:00
 * @Last modified by:   Roxy Chen
-* @Last modified time: 2016-08-19T05:49:34+08:00
+* @Last modified time: 2016-08-19T16:12:59+08:00
 * @License: Copyright (c) by Giftpack Inc. All Rights Reserved.
 */
 
@@ -40,8 +40,8 @@ module.exports = {
       {
         test: /\.js[x]?$/,
         loaders: [
-          'babel'
-          // 'eslint-loader'
+          'babel',
+          'eslint-loader'
         ],
         include: path.join(__dirname, 'src')
       },
